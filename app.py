@@ -77,61 +77,39 @@ if st.session_state.page == "home":
     st.markdown("**Trabajos realizados a medida**")
 
     st.divider()
+# ---------- FILAS ----------
+    # Lista de cards: título, nombre de página, imagen
+cards = [
+    {"titulo": "BAÑOS", "pagina": "bano", "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"},
+    {"titulo": "Centro de entretenimiento", "pagina": "centro", "img": "https://images.unsplash.com/photo-1598300052270-2be4d3e8dcff"},
+    {"titulo": "Clósets", "pagina": "closets", "img": "https://images.unsplash.com/photo-1616628185561-f3d87c3d1cd2"},
+    {"titulo": "Cocina", "pagina": "cocina", "img": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+    {"titulo": "Dormitorio", "pagina": "dormitorio", "img": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"},
+    {"titulo": "Estantes", "pagina": "estantes", "img": "https://images.unsplash.com/photo-1586201375761-83865001b7d9"},
+    {"titulo": "Porta copas", "pagina": "portacopas", "img": "https://images.unsplash.com/photo-1616628185599-b0f9812b2d3c"},
+    {"titulo": "Escritorio/Librero", "pagina": "escritorio", "img": "https://images.unsplash.com/photo-1580894732444-42004a8dca12"},
+    {"titulo": "Otros", "pagina": "otros", "img": "https://images.unsplash.com/photo-1581091215361-6e69e0b71f55"},
+]
 
-    # ---------- FILA 0 ----------
-    col1, col2, col3 = st.columns(3)
+# Recorremos las cards de 3 en 3 para crear filas
+for i in range(0, len(cards), 3):
+    cols = st.columns(3)
+    for j, col in enumerate(cols):
+        if i + j < len(cards):
+            card = cards[i + j]
+            with col:
+                # Botón invisible para cambiar de página
+                if st.button(" ", key=f"card_{card['pagina']}"):
+                    cambiar_pagina(card["pagina"])
 
-    with col1:
-        if st.button(" ", key="card_bano"):
-            cambiar_pagina("bano")
-
-        st.markdown("""
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a">
-        <div class="card-title">BAÑOS</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-
-    with col2:
-        if st.button("📺 Centro de entretenimiento"):
-            cambiar_pagina("centro")
-
-    with col3:
-        if st.button("🚪 Clósets"):
-            cambiar_pagina("closets")
-
-    # ---------- FILA 1 ----------
-    col4, col5, col6 = st.columns(3)
-
-    with col4:
-        if st.button("🍽️ Cocina"):
-            cambiar_pagina("cocina")
-
-    with col5:
-        if st.button("🛏️ Dormitorio"):
-            cambiar_pagina("dormitorio")
-
-    with col6:
-        if st.button("📚 Estantes"):
-            cambiar_pagina("estantes")
-
-    # ---------- FILA 2 ----------
-    col7, col8, col9 = st.columns(3)
-
-    with col7:
-        if st.button("🍷 Porta copas"):
-            cambiar_pagina("portacopas")
-
-    with col8:
-        if st.button("🚪 Escritorio/Librero"):
-            cambiar_pagina("escritorio")
-
-    with col9:
-        if st.button("📦 Otros"):
-            cambiar_pagina("otros")
-
+                # Card HTML
+                st.markdown(f"""
+                <div class="card">
+                    <img src="{card['img']}">
+                    <div class="card-title">{card['titulo']}</div>
+                </div>
+                """, unsafe_allow_html=True)
+    
     st.divider()
 
     st.markdown(
@@ -167,5 +145,6 @@ elif st.session_state.page == "escritorio":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
