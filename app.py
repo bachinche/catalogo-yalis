@@ -11,23 +11,35 @@ st.set_page_config(
 # ---------------- ESTILOS (CSS) ----------------
 st.markdown("""
 <style>
-body {
-    background-color: #f5f6f7;
+.card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-bottom: 20px;
 }
-h1, h2, h3 {
-    color: #1f2a37;
+
+.card:hover {
+    box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+    transform: translateY(-6px);
 }
-.boton {
-    background-color: #111827;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-title {
+    padding: 16px;
+    font-size: 22px;
+    font-weight: 700;
     text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-}
-.boton:hover {
-    background-color: #1f2a37;
+    color: #111827;
+    letter-spacing: 0.5px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -47,7 +59,7 @@ def mostrar_galeria(titulo, carpeta):
     imagenes = os.listdir(carpeta)
     cols = st.columns(3)
 
-    for i, img in enumerate(imagenes):
+    for i, img in enumerate(imagenes):-
         ruta = os.path.join(carpeta, img)
         imagen = Image.open(ruta)
         cols[i % 3].image(imagen, use_container_width=True)
@@ -69,8 +81,16 @@ if st.session_state.page == "home":
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        if st.button("🚿 Baños"):
+        if st.button(" ", key="card_banos"):
             cambiar_pagina("banos")
+
+        st.markdown("""
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a">
+            <div class="card-title">🚿 BAÑOS</div>
+        </div>
+        """, unsafe_allow_html=True)
+
 
     with col2:
         if st.button("📺 Centro de entretenimiento"):
