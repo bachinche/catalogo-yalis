@@ -76,7 +76,6 @@ if st.session_state.page == "home":
     st.markdown("**Trabajos realizados a medida**")
     st.divider()
 
-    # Lista de categorías con su página y URL de imagen
     categorias = [
         {"titulo": "BAÑOS", "pagina": "banos", "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"},
         {"titulo": "CENTRO DE ENTRETENIMIENTO", "pagina": "centro", "img": "https://images.unsplash.com/photo-1581090700227-4f8777f4d4a5"},
@@ -89,30 +88,29 @@ if st.session_state.page == "home":
         {"titulo": "OTROS", "pagina": "otros", "img": "https://images.unsplash.com/photo-1616627996783-1a2c5c0e9c3d"},
     ]
 
-    # Función para mostrar cada card y hacerla clicable
-    def mostrar_card(categoria):
-        if st.button("", key=f"card_{categoria['pagina']}"):
-            st.session_state.page = categoria["pagina"]
-        st.markdown(f"""
-        <div class="card" onclick="document.querySelector('button[key=\\'card_{categoria['pagina']}\\']').click()">
-            <img src="{categoria['img']}">
-            <div class="card-title">{categoria['titulo']}</div>
-        </div>
-        """, unsafe_allow_html=True)
-
     # Mostrar cards en filas de 3
     for i in range(0, len(categorias), 3):
         cols = st.columns(3)
         for j, categoria in enumerate(categorias[i:i+3]):
             with cols[j]:
-                mostrar_card(categoria)
+                st.markdown(f"""
+                <div class="card" onclick="window.location.href='#{categoria['pagina']}'">
+                    <img src="{categoria['img']}">
+                    <div class="card-title">{categoria['titulo']}</div>
+                </div>
+                """, unsafe_allow_html=True)
 
     st.divider()
-
     st.markdown(
         "📲 **Solicite una cotización por WhatsApp**  \n"
         "[👉 Contactar](https://wa.me/51999999999)"
     )
+
+# ---------------- Cambiar página ----------------
+# Capturar clic en la card usando el hash de la URL
+pagina_actual = st.experimental_get_query_params().get("page", ["home"])[0]
+if pagina_actual != st.session_state.page:
+    st.session_state.page = pagina_actual
 # ---------------- GALERÍAS ----------------
 elif st.session_state.page == "closets":
     mostrar_galeria("Clóset", "images/closet")
@@ -140,6 +138,7 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
 
