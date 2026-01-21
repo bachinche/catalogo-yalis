@@ -9,6 +9,7 @@ st.set_page_config(
 )
 
 # ---------------- ESTILOS (CSS) ----------------
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 st.markdown("""
 <style>
 .card {
@@ -36,11 +37,11 @@ st.markdown("""
 .card-title {
     padding: 18px 16px;
     font-size: 21px;
-    font-weight: 600;
+    font-weight: 800;
     text-align: center;
     color: #111827;
     letter-spacing: 1px;
-    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-family: "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     text-transform: uppercase;
 }
 </style>
@@ -167,3 +168,4 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
