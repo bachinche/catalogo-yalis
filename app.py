@@ -85,14 +85,12 @@ if st.session_state.page == "home":
         if st.button(" ", key="card_bano"):
             cambiar_pagina("bano")
 
-        st.markdown(f"""
-<a href="#" onclick="window.parent.document.querySelector('iframe').contentWindow.location.reload();window.parent.document.querySelector('iframe').contentWindow.st.experimental_set_query_params({{'page':'bano'}})">
+        st.markdown("""
     <div class="card">
         <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a">
         <div class="card-title">BAÑOS</div>
     </div>
-</a>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
 
 
@@ -169,4 +167,5 @@ elif st.session_state.page == "escritorio":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
