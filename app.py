@@ -70,7 +70,6 @@ def cambiar_pagina(pagina):
     st.session_state.page = pagina
 
 # ---------------- HOME ----------------
-# ---------------- HOME ----------------
 if st.session_state.page == "home":
     st.title("YALIS")
     st.subheader("Mueblería · Closets · Baños")
@@ -138,3 +137,4 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+ 
