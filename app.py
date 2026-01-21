@@ -9,9 +9,9 @@ st.set_page_config(
 )
 
 # ---------------- ESTILOS (CSS) ----------------
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 st.markdown("""
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+#<style>
 .card {
     border-radius: 16px;
     overflow: hidden;
@@ -44,7 +44,7 @@ st.markdown("""
     font-family: "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     text-transform: uppercase;
 }
-</style>
+#</style>
 """, unsafe_allow_html=True)
 
 # ---------------- ESTADO DE PÁGINA ----------------
@@ -168,4 +168,5 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
