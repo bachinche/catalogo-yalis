@@ -34,12 +34,14 @@ st.markdown("""
 }
 
 .card-title {
-    padding: 16px;
-    font-size: 22px;
-    font-weight: 700;
+    padding: 18px 16px;
+    font-size: 21px;
+    font-weight: 600;
     text-align: center;
     color: #111827;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -87,7 +89,7 @@ if st.session_state.page == "home":
         st.markdown("""
         <div class="card">
             <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a">
-            <div class="card-title">🚿 BAÑOS</div>
+            <div class="card-title">BAÑOS</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -165,4 +167,3 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
-
