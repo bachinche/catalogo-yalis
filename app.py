@@ -74,61 +74,34 @@ if st.session_state.page == "home":
     st.title("YALIS")
     st.subheader("Mueblería · Closets · Baños")
     st.markdown("**Trabajos realizados a medida**")
-
     st.divider()
 
-    # ---------- FILA 0 ----------
-    col1, col2, col3 = st.columns(3)
+    # Lista de categorías con su página y URL de imagen
+    categorias = [
+        {"titulo": "BAÑOS", "pagina": "banos", "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"},
+        {"titulo": "CENTRO DE ENTRETENIMIENTO", "pagina": "centro", "img": "https://images.unsplash.com/photo-1581090700227-4f8777f4d4a5"},
+        {"titulo": "CLÓSETS", "pagina": "closets", "img": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914"},
+        {"titulo": "COCINA", "pagina": "cocina", "img": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"},
+        {"titulo": "DORMITORIO", "pagina": "dormitorio", "img": "https://images.unsplash.com/photo-1598300054739-1c4c10f0c6a8"},
+        {"titulo": "ESTANTES", "pagina": "estantes", "img": "https://images.unsplash.com/photo-1616627988427-5e1e6c5fa5c1"},
+        {"titulo": "PORTA COPAS", "pagina": "portacopas", "img": "https://images.unsplash.com/photo-1616627992123-3f44c3b0d6e2"},
+        {"titulo": "PUERTA FALSA", "pagina": "puertafalsa", "img": "https://images.unsplash.com/photo-1616627994521-9f5c3a0c9b2e"},
+        {"titulo": "OTROS", "pagina": "otros", "img": "https://images.unsplash.com/photo-1616627996783-1a2c5c0e9c3d"},
+    ]
 
-    with col1:
-        if st.button(" ", key="card_banos"):
-            cambiar_pagina("banos")
-
-        st.markdown("""
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a">
-            <div class="card-title">BAÑOS</div>
-        </div>
-        """, unsafe_allow_html=True)
-
-
-    with col2:
-        if st.button("📺 Centro de entretenimiento"):
-            cambiar_pagina("centro")
-
-    with col3:
-        if st.button("🚪 Clósets"):
-            cambiar_pagina("closets")
-
-    # ---------- FILA 1 ----------
-    col4, col5, col6 = st.columns(3)
-
-    with col4:
-        if st.button("🍽️ Cocina"):
-            cambiar_pagina("cocina")
-
-    with col5:
-        if st.button("🛏️ Dormitorio"):
-            cambiar_pagina("dormitorio")
-
-    with col6:
-        if st.button("📚 Estantes"):
-            cambiar_pagina("estantes")
-
-    # ---------- FILA 2 ----------
-    col7, col8, col9 = st.columns(3)
-
-    with col7:
-        if st.button("🍷 Porta copas"):
-            cambiar_pagina("portacopas")
-
-    with col8:
-        if st.button("🚪 Puerta falsa"):
-            cambiar_pagina("puertafalsa")
-
-    with col9:
-        if st.button("📦 Otros"):
-            cambiar_pagina("otros")
+    # Mostrar cards en filas de 3
+    for i in range(0, len(categorias), 3):
+        cols = st.columns(3)
+        for j, categoria in enumerate(categorias[i:i+3]):
+            with cols[j]:
+                if st.button("", key=f"card_{categoria['pagina']}"):
+                    cambiar_pagina(categoria["pagina"])
+                st.markdown(f"""
+                <div class="card">
+                    <img src="{categoria['img']}">
+                    <div class="card-title">{categoria['titulo']}</div>
+                </div>
+                """, unsafe_allow_html=True)
 
     st.divider()
 
@@ -136,8 +109,6 @@ if st.session_state.page == "home":
         "📲 **Solicite una cotización por WhatsApp**  \n"
         "[👉 Contactar](https://wa.me/51999999999)"
     )
-
-
 # ---------------- GALERÍAS ----------------
 elif st.session_state.page == "closets":
     mostrar_galeria("Clóset", "images/closet")
@@ -165,6 +136,7 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
 
