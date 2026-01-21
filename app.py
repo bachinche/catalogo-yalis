@@ -19,8 +19,7 @@ st.markdown("""
     cursor: pointer;
     transition: all 0.25s ease;
     margin-bottom: 20px;
-    text-decoration: none;
-    color: inherit;
+    display: block;
 }
 
 .card:hover {
@@ -33,6 +32,8 @@ st.markdown("""
     height: 230px;
     object-fit: cover;
     display: block;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }
 
 .card-title {
@@ -42,6 +43,7 @@ st.markdown("""
     text-align: center;
     color: #111827;
     letter-spacing: 0.5px;
+    text-decoration: none;  /* Quita líneas de los títulos */
 }
 </style>
 """, unsafe_allow_html=True)
@@ -67,13 +69,15 @@ def mostrar_galeria(titulo, carpeta):
 def cambiar_pagina(pagina):
     st.session_state.page = pagina
 
-def mostrar_card_html(categoria):
-    """Card completamente clicable usando solo HTML"""
+def mostrar_card(categoria):
+    """Muestra la card con estilo y cambia página al hacer clic"""
+    if st.button("", key=f"card_btn_{categoria['pagina']}"):
+        cambiar_pagina(categoria['pagina'])
     st.markdown(f"""
-    <a href="?page={categoria['pagina']}" class="card">
+    <div class="card">
         <img src="{categoria['img']}">
         <div class="card-title">{categoria['titulo']}</div>
-    </a>
+    </div>
     """, unsafe_allow_html=True)
 
 # ---------------- HOME ----------------
@@ -95,12 +99,11 @@ if st.session_state.page == "home":
         {"titulo": "OTROS", "pagina": "otros", "img": "https://images.unsplash.com/photo-1616627996783-1a2c5c0e9c3d"},
     ]
 
-    # Mostrar cards en filas de 3
     for i in range(0, len(categorias), 3):
         cols = st.columns(3)
         for j, categoria in enumerate(categorias[i:i+3]):
             with cols[j]:
-                mostrar_card_html(categoria)
+                mostrar_card(categoria)
 
     st.divider()
     st.markdown(
@@ -111,35 +114,19 @@ if st.session_state.page == "home":
 # ---------------- GALERÍAS ----------------
 elif st.session_state.page == "closets":
     mostrar_galeria("Clóset", "images/closet")
-
 elif st.session_state.page == "banos":
     mostrar_galeria("Baños", "images/bano")
-
 elif st.session_state.page == "centro":
     mostrar_galeria("Centro de entretenimiento", "images/centro")
-
 elif st.session_state.page == "cocina":
     mostrar_galeria("Cocina", "images/cocina")
-
 elif st.session_state.page == "dormitorio":
     mostrar_galeria("Dormitorio", "images/dormitorio")
-
 elif st.session_state.page == "estantes":
     mostrar_galeria("Estantes", "images/estantes")
-
 elif st.session_state.page == "portacopas":
     mostrar_galeria("Porta copas", "images/portacopas")
-
 elif st.session_state.page == "puertafalsa":
     mostrar_galeria("Puerta falsa", "images/puertafalsa")
-
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
-
-# ---------------- Capturar página desde URL ----------------
-query_params = st.experimental_get_query_params()
-if "page" in query_params:
-    page = query_params["page"][0]
-    if page != st.session_state.page:
-        st.session_state.page = page
-        st.experimental_rerun()
