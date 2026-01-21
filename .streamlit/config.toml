@@ -1,8 +1,8 @@
 [theme]
 base="dark"
 
-primaryColor="#9CA3AF"        # Gris plata
-backgroundColor="#121212"     # Gris carbón
-secondaryBackgroundColor="#1E1E1E"
-textColor="#F5F5F5"
+primaryColor="#1F6AE1"        # Azul corporativo
+backgroundColor="#0E1117"     # Fondo negro azulado
+secondaryBackgroundColor="#161B22" 
+textColor="#E6EDF3"           # Texto claro suave
 font="sans serif"
