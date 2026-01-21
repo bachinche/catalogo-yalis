@@ -82,7 +82,7 @@ if st.session_state.page == "home":
     cards = [
         {"titulo": "BAÑOS", "pagina": "bano", "img": "https://raw.githubusercontent.com/bachinche/catalogo-yalis/refs/heads/main/images/bano/b1.jpeg"},
         {"titulo": "Centro de entretenimiento", "pagina": "centro", "img": "https://images.unsplash.com/photo-1598300052270-2be4d3e8dcff"},
-        {"titulo": "Clósets", "pagina": "closets", "img": "https://images.unsplash.com/photo-1616628185561-f3d87c3d1cd2"},
+        {"titulo": "Clósets", "pagina": "closets", "img": "https://raw.githubusercontent.com/bachinche/catalogo-yalis/refs/heads/main/images/closet/c1.jpeg"},
         {"titulo": "Cocina", "pagina": "cocina", "img": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
         {"titulo": "Dormitorio", "pagina": "dormitorio", "img": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"},
         {"titulo": "Estantes", "pagina": "estantes", "img": "https://images.unsplash.com/photo-1586201375761-83865001b7d9"},
@@ -145,6 +145,7 @@ elif st.session_state.page == "escritorio":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
 
