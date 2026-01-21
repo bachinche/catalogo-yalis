@@ -85,7 +85,7 @@ if st.session_state.page == "home":
         {"titulo": "DORMITORIO", "pagina": "dormitorio", "img": "https://images.unsplash.com/photo-1598300054739-1c4c10f0c6a8"},
         {"titulo": "ESTANTES", "pagina": "estantes", "img": "https://images.unsplash.com/photo-1616627988427-5e1e6c5fa5c1"},
         {"titulo": "PORTA COPAS", "pagina": "portacopas", "img": "https://images.unsplash.com/photo-1616627992123-3f44c3b0d6e2"},
-        {"titulo": "PUERTA FALSA", "pagina": "puertafalsa", "img": "https://images.unsplash.com/photo-1616627994521-9f5c3a0c9b2e"},
+        {"titulo": "ESCRITORIO/LIBRERO", "pagina": "escritorio", "img": "https://images.unsplash.com/photo-1616627994521-9f5c3a0c9b2e"},
         {"titulo": "OTROS", "pagina": "otros", "img": "https://images.unsplash.com/photo-1616627996783-1a2c5c0e9c3d"},
     ]
 
@@ -136,6 +136,7 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
 
