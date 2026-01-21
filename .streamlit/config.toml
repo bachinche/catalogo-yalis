@@ -1,7 +1,8 @@
 [theme]
-base = "light"
-primaryColor = "#111827"
-backgroundColor = "#f5f6f7"
-secondaryBackgroundColor = "#e5e7eb"
-textColor = "#1f2a37"
-font = "sans serif"
+base="dark"
+
+primaryColor="#9CA3AF"        # Gris plata
+backgroundColor="#121212"     # Gris carbón
+secondaryBackgroundColor="#1E1E1E"
+textColor="#F5F5F5"
+font="sans serif"
