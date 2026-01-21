@@ -70,7 +70,7 @@ if st.session_state.page == "home":
 
     with col1:
         if st.button("🚿 Baños"):
-            cambiar_pagina("banos")
+            cambiar_pagina("bano")
 
     with col2:
         if st.button("📺 Centro de entretenimiento"):
@@ -103,8 +103,8 @@ if st.session_state.page == "home":
             cambiar_pagina("portacopas")
 
     with col8:
-        if st.button("🚪 Puerta falsa"):
-            cambiar_pagina("puertafalsa")
+        if st.button("🚪 Escritorio/Librero"):
+            cambiar_pagina("escritorio")
 
     with col9:
         if st.button("📦 Otros"):
@@ -140,7 +140,7 @@ elif st.session_state.page == "estantes":
 elif st.session_state.page == "portacopas":
     mostrar_galeria("Porta copas", "images/portacopas")
 
-elif st.session_state.page == "puertafalsa":
+elif st.session_state.page == "escritorio":
     mostrar_galeria("Puerta falsa", "images/puertafalsa")
 
 elif st.session_state.page == "otros":
