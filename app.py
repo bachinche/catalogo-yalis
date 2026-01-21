@@ -75,42 +75,42 @@ if st.session_state.page == "home":
     st.title("YALIS")
     st.subheader("Mueblería · Closets · Baños")
     st.markdown("**Trabajos realizados a medida**")
-
     st.divider()
-# ---------- FILAS ----------
+
+    # ---------- FILAS ----------
     # Lista de cards: título, nombre de página, imagen
-cards = [
-    {"titulo": "BAÑOS", "pagina": "bano", "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"},
-    {"titulo": "Centro de entretenimiento", "pagina": "centro", "img": "https://images.unsplash.com/photo-1598300052270-2be4d3e8dcff"},
-    {"titulo": "Clósets", "pagina": "closets", "img": "https://images.unsplash.com/photo-1616628185561-f3d87c3d1cd2"},
-    {"titulo": "Cocina", "pagina": "cocina", "img": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
-    {"titulo": "Dormitorio", "pagina": "dormitorio", "img": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"},
-    {"titulo": "Estantes", "pagina": "estantes", "img": "https://images.unsplash.com/photo-1586201375761-83865001b7d9"},
-    {"titulo": "Porta copas", "pagina": "portacopas", "img": "https://images.unsplash.com/photo-1616628185599-b0f9812b2d3c"},
-    {"titulo": "Escritorio/Librero", "pagina": "escritorio", "img": "https://images.unsplash.com/photo-1580894732444-42004a8dca12"},
-    {"titulo": "Otros", "pagina": "otros", "img": "https://images.unsplash.com/photo-1581091215361-6e69e0b71f55"},
-]
+    cards = [
+        {"titulo": "BAÑOS", "pagina": "bano", "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"},
+        {"titulo": "Centro de entretenimiento", "pagina": "centro", "img": "https://images.unsplash.com/photo-1598300052270-2be4d3e8dcff"},
+        {"titulo": "Clósets", "pagina": "closets", "img": "https://images.unsplash.com/photo-1616628185561-f3d87c3d1cd2"},
+        {"titulo": "Cocina", "pagina": "cocina", "img": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+        {"titulo": "Dormitorio", "pagina": "dormitorio", "img": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"},
+        {"titulo": "Estantes", "pagina": "estantes", "img": "https://images.unsplash.com/photo-1586201375761-83865001b7d9"},
+        {"titulo": "Porta copas", "pagina": "portacopas", "img": "https://images.unsplash.com/photo-1616628185599-b0f9812b2d3c"},
+        {"titulo": "Escritorio/Librero", "pagina": "escritorio", "img": "https://images.unsplash.com/photo-1580894732444-42004a8dca12"},
+        {"titulo": "Otros", "pagina": "otros", "img": "https://images.unsplash.com/photo-1581091215361-6e69e0b71f55"},
+    ]
 
-# Recorremos las cards de 3 en 3 para crear filas
-for i in range(0, len(cards), 3):
-    cols = st.columns(3)
-    for j, col in enumerate(cols):
-        if i + j < len(cards):
-            card = cards[i + j]
-            with col:
-                # Botón invisible para cambiar de página
-                if st.button(" ", key=f"card_{card['pagina']}"):
-                    cambiar_pagina(card["pagina"])
+    # Recorremos las cards de 3 en 3 para crear filas
+    for i in range(0, len(cards), 3):
+        cols = st.columns(3)
+        for j, col in enumerate(cols):
+            if i + j < len(cards):
+                card = cards[i + j]
+                with col:
+                    # Botón invisible para cambiar de página
+                    if st.button(" ", key=f"card_{card['pagina']}"):
+                        cambiar_pagina(card["pagina"])
 
-                # Card HTML
-                st.markdown(f"""
-                <div class="card">
-                    <img src="{card['img']}">
-                    <div class="card-title">{card['titulo']}</div>
-                </div>
-                """, unsafe_allow_html=True)
-    
-    st.divider()
+                    # Card HTML
+                    st.markdown(f"""
+                    <div class="card">
+                        <img src="{card['img']}">
+                        <div class="card-title">{card['titulo']}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+        st.divider()
 
     st.markdown(
         "📲 **Solicite una cotización por WhatsApp**  \n"
@@ -145,6 +145,7 @@ elif st.session_state.page == "escritorio":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
 
