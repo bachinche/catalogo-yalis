@@ -89,19 +89,23 @@ if st.session_state.page == "home":
         {"titulo": "OTROS", "pagina": "otros", "img": "https://images.unsplash.com/photo-1616627996783-1a2c5c0e9c3d"},
     ]
 
+    # Función para mostrar cada card y hacerla clicable
+    def mostrar_card(categoria):
+        if st.button("", key=f"card_{categoria['pagina']}"):
+            st.session_state.page = categoria["pagina"]
+        st.markdown(f"""
+        <div class="card" onclick="document.querySelector('button[key=\\'card_{categoria['pagina']}\\']').click()">
+            <img src="{categoria['img']}">
+            <div class="card-title">{categoria['titulo']}</div>
+        </div>
+        """, unsafe_allow_html=True)
+
     # Mostrar cards en filas de 3
     for i in range(0, len(categorias), 3):
         cols = st.columns(3)
         for j, categoria in enumerate(categorias[i:i+3]):
             with cols[j]:
-                if st.button("", key=f"card_{categoria['pagina']}"):
-                    cambiar_pagina(categoria["pagina"])
-                st.markdown(f"""
-                <div class="card">
-                    <img src="{categoria['img']}">
-                    <div class="card-title">{categoria['titulo']}</div>
-                </div>
-                """, unsafe_allow_html=True)
+                mostrar_card(categoria)
 
     st.divider()
 
@@ -136,6 +140,7 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
 
