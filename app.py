@@ -41,11 +41,6 @@ st.markdown("""
     color: #111827;
     letter-spacing: 0.5px;
 }
-
-/* Ocultar botones de los forms invisibles */
-button[type="submit"] {
-    display: none;
-}
 </style>
 """, unsafe_allow_html=True)
 
@@ -54,10 +49,6 @@ if "page" not in st.session_state:
     st.session_state.page = "home"
 
 # ---------------- FUNCIONES ----------------
-def cambiar_pagina(pagina):
-    st.session_state.page = pagina
-    st.experimental_rerun()  # recarga la app para mostrar la nueva página
-
 def mostrar_galeria(titulo, carpeta):
     st.header(titulo)
 
@@ -73,21 +64,12 @@ def mostrar_galeria(titulo, carpeta):
         imagen = Image.open(ruta)
         cols[i % 3].image(imagen, use_container_width=True)
 
-    # Botón para volver al inicio
-    if st.button("⬅ Volver al inicio"):
-        cambiar_pagina("home")
+    st.button("⬅ Volver al inicio", on_click=lambda: cambiar_pagina("home"))
 
-def mostrar_card(categoria):
-    """Muestra una card clicable que cambia de página"""
-    with st.form(key=f"form_{categoria['pagina']}"):
-        st.markdown(f"""
-        <div class="card" onclick="document.getElementById('btn_{categoria['pagina']}').click()">
-            <img src="{categoria['img']}">
-            <div class="card-title">{categoria['titulo']}</div>
-        </div>
-        """, unsafe_allow_html=True)
-        st.form_submit_button(" ", key=f"btn_{categoria['pagina']}", on_click=lambda: cambiar_pagina(categoria['pagina']))
+def cambiar_pagina(pagina):
+    st.session_state.page = pagina
 
+# ---------------- HOME ----------------
 # ---------------- HOME ----------------
 if st.session_state.page == "home":
     st.title("YALIS")
@@ -95,6 +77,7 @@ if st.session_state.page == "home":
     st.markdown("**Trabajos realizados a medida**")
     st.divider()
 
+    # Lista de categorías con su página y URL de imagen
     categorias = [
         {"titulo": "BAÑOS", "pagina": "banos", "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"},
         {"titulo": "CENTRO DE ENTRETENIMIENTO", "pagina": "centro", "img": "https://images.unsplash.com/photo-1581090700227-4f8777f4d4a5"},
@@ -112,9 +95,17 @@ if st.session_state.page == "home":
         cols = st.columns(3)
         for j, categoria in enumerate(categorias[i:i+3]):
             with cols[j]:
-                mostrar_card(categoria)
+                if st.button("", key=f"card_{categoria['pagina']}"):
+                    cambiar_pagina(categoria["pagina"])
+                st.markdown(f"""
+                <div class="card">
+                    <img src="{categoria['img']}">
+                    <div class="card-title">{categoria['titulo']}</div>
+                </div>
+                """, unsafe_allow_html=True)
 
     st.divider()
+
     st.markdown(
         "📲 **Solicite una cotización por WhatsApp**  \n"
         "[👉 Contactar](https://wa.me/51999999999)"
@@ -123,21 +114,27 @@ if st.session_state.page == "home":
 # ---------------- GALERÍAS ----------------
 elif st.session_state.page == "closets":
     mostrar_galeria("Clóset", "images/closet")
+
 elif st.session_state.page == "banos":
     mostrar_galeria("Baños", "images/bano")
+
 elif st.session_state.page == "centro":
     mostrar_galeria("Centro de entretenimiento", "images/centro")
+
 elif st.session_state.page == "cocina":
     mostrar_galeria("Cocina", "images/cocina")
+
 elif st.session_state.page == "dormitorio":
     mostrar_galeria("Dormitorio", "images/dormitorio")
+
 elif st.session_state.page == "estantes":
     mostrar_galeria("Estantes", "images/estantes")
+
 elif st.session_state.page == "portacopas":
     mostrar_galeria("Porta copas", "images/portacopas")
+
 elif st.session_state.page == "puertafalsa":
     mostrar_galeria("Puerta falsa", "images/puertafalsa")
+
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
-elif st.session_state.page == "escritorio":
-    mostrar_galeria("Escritorio / Librero", "images/escritorio")
