@@ -34,7 +34,7 @@ st.markdown("""
     display: block;
 }
 
-card-title {
+.card-title {
     font-family: "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-weight: 800;  /* negrita extra */
     font-size: 22px;
@@ -167,6 +167,7 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
 
