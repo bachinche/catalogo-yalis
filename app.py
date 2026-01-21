@@ -59,7 +59,7 @@ def mostrar_galeria(titulo, carpeta):
     imagenes = os.listdir(carpeta)
     cols = st.columns(3)
 
-    for i, img in enumerate(imagenes):-
+    for i, img in enumerate(imagenes):
         ruta = os.path.join(carpeta, img)
         imagen = Image.open(ruta)
         cols[i % 3].image(imagen, use_container_width=True)
@@ -165,3 +165,4 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
