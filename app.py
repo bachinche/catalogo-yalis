@@ -80,7 +80,7 @@ if st.session_state.page == "home":
     # ---------- FILAS ----------
     # Lista de cards: título, nombre de página, imagen
     cards = [
-        {"titulo": "BAÑOS", "pagina": "bano", "img": "images/bano/b1.jpeg"},
+        {"titulo": "BAÑOS", "pagina": "bano", "img": "https://github.com/bachinche/catalogo-yalis/blob/main/images/bano/b1.jpeg"},
         {"titulo": "Centro de entretenimiento", "pagina": "centro", "img": "https://images.unsplash.com/photo-1598300052270-2be4d3e8dcff"},
         {"titulo": "Clósets", "pagina": "closets", "img": "https://images.unsplash.com/photo-1616628185561-f3d87c3d1cd2"},
         {"titulo": "Cocina", "pagina": "cocina", "img": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
@@ -145,6 +145,7 @@ elif st.session_state.page == "escritorio":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
 
