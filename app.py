@@ -10,8 +10,7 @@ st.set_page_config(
 
 # ---------------- ESTILOS (CSS) ----------------
 st.markdown("""
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-#<style>
+<style>
 .card {
     border-radius: 16px;
     overflow: hidden;
@@ -35,16 +34,14 @@ st.markdown("""
 }
 
 .card-title {
-    padding: 18px 16px;
-    font-size: 21px;
-    font-weight: 800;
+    padding: 16px;
+    font-size: 22px;
+    font-weight: 700;
     text-align: center;
     color: #111827;
-    letter-spacing: 1px;
-    font-family: "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-#</style>
+</style>
 """, unsafe_allow_html=True)
 
 # ---------------- ESTADO DE PÁGINA ----------------
@@ -168,5 +165,6 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
 
 
