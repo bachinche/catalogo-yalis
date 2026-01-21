@@ -65,19 +65,50 @@ if st.session_state.page == "home":
 
     st.divider()
 
+    # ---------- FILA 0 ----------
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        if st.button("🪑 MUEBLES"):
-            cambiar_pagina("muebles")
+        if st.button("🚿 Baños"):
+            cambiar_pagina("banos")
 
     with col2:
-        if st.button("🚪 CLOSETS"):
-            cambiar_pagina("closets")
+        if st.button("📺 Centro de entretenimiento"):
+            cambiar_pagina("centro")
 
     with col3:
-        if st.button("🚿 BAÑOS"):
-            cambiar_pagina("banos")
+        if st.button("🚪 Clósets"):
+            cambiar_pagina("closets")
+
+    # ---------- FILA 1 ----------
+    col4, col5, col6 = st.columns(3)
+
+    with col4:
+        if st.button("🍽️ Cocina"):
+            cambiar_pagina("cocina")
+
+    with col5:
+        if st.button("🛏️ Dormitorio"):
+            cambiar_pagina("dormitorio")
+
+    with col6:
+        if st.button("📚 Estantes"):
+            cambiar_pagina("estantes")
+
+    # ---------- FILA 2 ----------
+    col7, col8, col9 = st.columns(3)
+
+    with col7:
+        if st.button("🍷 Porta copas"):
+            cambiar_pagina("portacopas")
+
+    with col8:
+        if st.button("🚪 Puerta falsa"):
+            cambiar_pagina("puertafalsa")
+
+    with col9:
+        if st.button("📦 Otros"):
+            cambiar_pagina("otros")
 
     st.divider()
 
@@ -86,12 +117,31 @@ if st.session_state.page == "home":
         "[👉 Contactar](https://wa.me/51999999999)"
     )
 
-# ---------------- GALERÍAS ----------------
-elif st.session_state.page == "muebles":
-    mostrar_galeria("Muebles", "images/muebles")
 
+# ---------------- GALERÍAS ----------------
 elif st.session_state.page == "closets":
-    mostrar_galeria("Closets", "images/closets")
+    mostrar_galeria("Clóset", "images/closet")
 
 elif st.session_state.page == "banos":
-    mostrar_galeria("Baños", "images/banos")
+    mostrar_galeria("Baños", "images/bano")
+
+elif st.session_state.page == "centro":
+    mostrar_galeria("Centro de entretenimiento", "images/centro")
+
+elif st.session_state.page == "cocina":
+    mostrar_galeria("Cocina", "images/cocina")
+
+elif st.session_state.page == "dormitorio":
+    mostrar_galeria("Dormitorio", "images/dormitorio")
+
+elif st.session_state.page == "estantes":
+    mostrar_galeria("Estantes", "images/estantes")
+
+elif st.session_state.page == "portacopas":
+    mostrar_galeria("Porta copas", "images/portacopas")
+
+elif st.session_state.page == "puertafalsa":
+    mostrar_galeria("Puerta falsa", "images/puertafalsa")
+
+elif st.session_state.page == "otros":
+    mostrar_galeria("Otros", "images/otros")
