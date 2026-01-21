@@ -19,6 +19,8 @@ st.markdown("""
     cursor: pointer;
     transition: all 0.25s ease;
     margin-bottom: 20px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .card:hover {
@@ -51,23 +53,28 @@ if "page" not in st.session_state:
 # ---------------- FUNCIONES ----------------
 def mostrar_galeria(titulo, carpeta):
     st.header(titulo)
-
     if not os.path.exists(carpeta):
         st.warning("No hay imágenes disponibles.")
         return
-
     imagenes = os.listdir(carpeta)
     cols = st.columns(3)
-
     for i, img in enumerate(imagenes):
         ruta = os.path.join(carpeta, img)
         imagen = Image.open(ruta)
         cols[i % 3].image(imagen, use_container_width=True)
-
     st.button("⬅ Volver al inicio", on_click=lambda: cambiar_pagina("home"))
 
 def cambiar_pagina(pagina):
     st.session_state.page = pagina
+
+def mostrar_card_html(categoria):
+    """Card completamente clicable usando solo HTML"""
+    st.markdown(f"""
+    <a href="?page={categoria['pagina']}" class="card">
+        <img src="{categoria['img']}">
+        <div class="card-title">{categoria['titulo']}</div>
+    </a>
+    """, unsafe_allow_html=True)
 
 # ---------------- HOME ----------------
 if st.session_state.page == "home":
@@ -76,7 +83,6 @@ if st.session_state.page == "home":
     st.markdown("**Trabajos realizados a medida**")
     st.divider()
 
-    # Lista de categorías con su página y URL de imagen
     categorias = [
         {"titulo": "BAÑOS", "pagina": "banos", "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"},
         {"titulo": "CENTRO DE ENTRETENIMIENTO", "pagina": "centro", "img": "https://images.unsplash.com/photo-1581090700227-4f8777f4d4a5"},
@@ -94,17 +100,9 @@ if st.session_state.page == "home":
         cols = st.columns(3)
         for j, categoria in enumerate(categorias[i:i+3]):
             with cols[j]:
-                if st.button("", key=f"card_{categoria['pagina']}"):
-                    cambiar_pagina(categoria["pagina"])
-                st.markdown(f"""
-                <div class="card">
-                    <img src="{categoria['img']}">
-                    <div class="card-title">{categoria['titulo']}</div>
-                </div>
-                """, unsafe_allow_html=True)
+                mostrar_card_html(categoria)
 
     st.divider()
-
     st.markdown(
         "📲 **Solicite una cotización por WhatsApp**  \n"
         "[👉 Contactar](https://wa.me/51999999999)"
@@ -137,4 +135,11 @@ elif st.session_state.page == "puertafalsa":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
- 
+
+# ---------------- Capturar página desde URL ----------------
+query_params = st.experimental_get_query_params()
+if "page" in query_params:
+    page = query_params["page"][0]
+    if page != st.session_state.page:
+        st.session_state.page = page
+        st.experimental_rerun()
