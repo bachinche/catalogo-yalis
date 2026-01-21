@@ -122,7 +122,7 @@ if st.session_state.page == "home":
 elif st.session_state.page == "closets":
     mostrar_galeria("Clóset", "images/closet")
 
-elif st.session_state.page == "banos":
+elif st.session_state.page == "bano":
     mostrar_galeria("Baños", "images/bano")
 
 elif st.session_state.page == "centro":
@@ -145,3 +145,4 @@ elif st.session_state.page == "escritorio":
 
 elif st.session_state.page == "otros":
     mostrar_galeria("Otros", "images/otros")
+
